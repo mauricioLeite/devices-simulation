@@ -33,3 +33,4 @@ ENV NODE_ENV=development
 
 # Execute tsc to watch files
 CMD [ "/bin/sh", "-c", "yarn install; yarn watch" ]
+#CMD [ "/bin/sh", "-c", "yarn install" ]

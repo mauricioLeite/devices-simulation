@@ -1,4 +1,12 @@
 version: '3.9'
+
+networks:
+  mqtt-net:
+    name: mqtt-docker_net
+    driver: bridge
+    attachable: true
+    
+
 services:
   devices-simulation:
     build: 
@@ -13,8 +21,8 @@ services:
     environment:
       - TZ=America/Sao_Paulo
       - ENVIRONMENT=dev
-    # networks:
-    #   - devices-simulation
+    networks:
+      - mqtt-net
     volumes:
       - ${PWD}:/app
       - /etc/timezone:/etc/timezone:ro
@@ -22,6 +30,6 @@ services:
     security_opt:
       - no-new-privileges
     ports:
-      - "3001:3001"
+      - "3001:3000"
     restart: unless-stopped
     container_name: devices-simulation
